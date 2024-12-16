@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Sale</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Arial&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4; /* Background warna tubuh */
+        }
+
+        /* ======================== Menu Navigasi ======================== */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        /* ======================== Bagian Header ======================== */
+        .header {
+            position: relative;
+            height: 350px; /* Adjusted height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+            overflow: hidden;
+        }
+
+        .header img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 10px;
+        }
+
+        /* ======================== Bagian Produk ======================== */
+        .best-seller h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5rem;
+            color: #444;
+            letter-spacing: 2px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            margin-top: 20px;
+        }
+
+        .product-item {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            position: relative; /* To position the "On Sale" text */
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #eee;
+        }
+
+        .product-item h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        .product-item p {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .product-item .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 10px 0;
+        }
+
+        .product-item .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        .product-item .buy-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-item .buy-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .product-item .cart-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        /* ======================== "On Sale" Text ======================== */
+        .sale-banner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        /* ======================== 12 Product Section ======================== */
+        .product-count {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Menu Navigasi -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sale.html">Sale</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="header">
+        <img src="sale.jpg" alt="Background Image" class="header-image">
+        <h1>Daily Sale</h1>
+    </div>
+
+    <!-- 12 Product Text -->
+    <div class="product-count">
+        <p>6 Products</p>
+    </div>
+
+    <!-- Product Listings -->
+    <div class="products">
+        <!-- Product 1 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft9.jpg" alt="Top">
+            <p>Jada Grey Blazer</p>           
+             <div class="price">
+                <span class="old-price">$50.00</span>
+                $30.00
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft10.jpg" alt="Outer">
+            <p>Rachel Top White</p>
+            <div class="price">
+                <span class="old-price">$60.00</span>
+                $35.00
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft11.jpg" alt="Dress">
+            <p>Astro Top Black Denim</p>
+            <div class="price">
+                <span class="old-price">$80.00</span>
+                $45.00
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft12.jpg" alt="Bottom">
+             <p>Roman Dress Black Striped</p>
+            <div class="price">
+                <span class="old-price">$40.00</span>
+                $25.00
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft16.jpg" alt="Bottom">
+             <p>Kath Striped Shirt Dress Navy</p>
+            <div class="price">
+                <span class="old-price">$40.00</span>
+                $25.00
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft13.jpg" alt="Bottom">
+             <p>Lowi Cargo Skirt Grey</p>
+            <div class="price">
+                <span class="old-price">$40.00</span>
+                $25.00
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft14.jpg" alt="Bottom">
+             <p>Dayle Shirt Black</p>
+            <div class="price">
+                <span class="old-price">$40.00</span>
+                $25.00
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item">
+            <div class="sale-banner">On Sale</div>
+            <img src="ft15.jpg" alt="Bottom">
+            <p>Roman Dress Black Striped</p>
+            <div class="price">
+                <span class="old-price">$40.00</span>
+                $25.00
+            </div>
+        </div>
+    </div>
+</body>
+</html>
